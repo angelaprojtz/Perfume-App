@@ -1,0 +1,49 @@
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.perfume-search {
+    margin-bottom: 2rem;
+}
+
+.perfume-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.perfume-card {
+    width: 200px;
+}
+
+.perfume-details {
+    margin-top: 0.5rem;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+.perfume-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.search-error {
+    color: crimson;
+}
+
+.search-success {
+    color: seagreen;
+}

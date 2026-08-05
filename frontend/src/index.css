@@ -1,0 +1,10 @@
+input, button, label {
+    margin-top: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #f3d8ff;
+  color: #923ba6;
+}
