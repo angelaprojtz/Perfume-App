@@ -5,7 +5,7 @@ import PerfumeCollection from './PerfumeCollection'
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 import "react-tabs/style/react-tabs.css"
 
-function App() {
+export default function App() {
 
   return (
     <Tabs>
@@ -25,5 +25,3 @@ function App() {
     </Tabs>
   )
 }
-
-export default App

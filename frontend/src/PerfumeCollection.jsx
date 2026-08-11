@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 
-const PerfumeCollection = () => {
+export default function PerfumeCollection() {
   const [perfumes, setPerfumes] = useState([])
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [expandedId, setExpandedId] = useState(null) // which card's details are open
   const [draft, setDraft] = useState({ purchasedAt: "", wouldBuyAgain: "" })
 
-  const fetchCollection = async () => {
+  async function fetchCollection() {
     try {
       const response = await fetch("http://127.0.0.1:5000/collection")
       const data = await response.json()
@@ -27,7 +27,7 @@ const PerfumeCollection = () => {
     fetchCollection()
   }, [])
 
-  const removeFromCollection = async (id) => {
+  async function removeFromCollection(id) {
     try {
       const response = await fetch(`http://127.0.0.1:5000/collection/${id}`, {
         method: "DELETE",
@@ -44,7 +44,7 @@ const PerfumeCollection = () => {
     }
   }
 
-  const toggleDetails = (perfume) => {
+  function toggleDetails(perfume) {
     if (expandedId === perfume.id) {
       setExpandedId(null)
       return
@@ -55,13 +55,13 @@ const PerfumeCollection = () => {
     setDraft({
       purchasedAt: perfume.purchasedAt || "",
       wouldBuyAgain:
-        perfume.wouldBuyAgain === true ? "yes" 
+        perfume.wouldBuyAgain === true ? "yes"
         : perfume.wouldBuyAgain === false ? "no"
         : "",
     })
   }
 
-  const saveDetails = async (id) => {
+  async function saveDetails(id) {
     setError("")
     setMessage("")
 
@@ -173,5 +173,3 @@ const PerfumeCollection = () => {
     </div>
   )
 }
-
-export default PerfumeCollection

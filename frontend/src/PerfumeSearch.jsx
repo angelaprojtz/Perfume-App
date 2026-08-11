@@ -1,12 +1,12 @@
 import { useState } from "react"
 
-const PerfumeSearch = () => {
+export default function PerfumeSearch() {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState([])
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
 
-  const searchPerfumes = async (event) => {
+  async function searchPerfumes(event) {
     event.preventDefault() // stop the page from refreshing on submit
     setError("")
     setMessage("") //Without these, error messages stay even after successful search
@@ -36,7 +36,7 @@ const PerfumeSearch = () => {
     }
   }
 
-  const addToCollection = async (perfume) => {
+  async function addToCollection(perfume) {
     setError("")
     setMessage("")
 
@@ -108,5 +108,3 @@ const PerfumeSearch = () => {
     </div>
   )
 }
-
-export default PerfumeSearch
