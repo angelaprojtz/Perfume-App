@@ -11,6 +11,12 @@
 
 .perfume-search {
     margin-bottom: 2rem;
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .perfume-results {
@@ -22,6 +28,8 @@
 
 .perfume-card {
     width: 200px;
+    border-radius: 10px;
+    background-color: rgb(255, 230, 250);
 }
 
 .perfume-details {
@@ -38,6 +46,7 @@
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 10px;
 }
 
 .search-error {
@@ -46,4 +55,46 @@
 
 .search-success {
     color: seagreen;
+}
+
+header {
+    background-color: rgb(190, 149, 228);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: "Playfair Display", serif;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+
+    h1 {
+       color: rgb(95, 13, 83); 
+    }
+
+    img {
+        height: 100px;
+        width: auto;
+    }
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    input {
+        border-radius: 6px;
+        border: 1px solid rgb(180, 47, 118);
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+        flex-grow: 1;
+        padding: 9px 13px;
+        min-width: 150px;
+        max-width: 400px;
+    }
+
+    button {
+        border: none;
+        border-radius: 6px;
+        background-color: rgb(223, 117, 211);
+        color: white;
+        width: 100px;
+    }
 }

@@ -71,7 +71,7 @@ export default function PerfumeSearch() {
     <div className="perfume-search">
       <h2>Search for perfumes</h2>
 
-      <form onSubmit={searchPerfumes}>
+      <form className="search-form" onSubmit={searchPerfumes}>
         <input
           type="text"
           placeholder="Enter a perfume name..."

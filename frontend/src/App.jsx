@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import './App.css'
-import PerfumeSearch from './PerfumeSearch'
-import PerfumeCollection from './PerfumeCollection'
+import Header from './components/Header'
+import PerfumeSearch from './components/PerfumeSearch'
+import PerfumeCollection from './components/PerfumeCollection'
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 import "react-tabs/style/react-tabs.css"
 
 export default function App() {
 
   return (
+    <>
+    < Header />
     <Tabs>
       <TabList>
         <Tab>Search Perfume</Tab>
@@ -15,13 +18,14 @@ export default function App() {
       </TabList>
 
       <TabPanel>
-        <PerfumeSearch/>
+        < PerfumeSearch />
       </TabPanel>
 
       <TabPanel>
-        <PerfumeCollection/>
+        < PerfumeCollection />
       </TabPanel>
 
-    </Tabs>
+    </Tabs>    
+    </>
   )
 }
