@@ -104,12 +104,12 @@ export default function PerfumeCollection() {
           const isExpanded = expandedId === perfume.id
 
           return (
-            <div key={perfume.id} className="perfume-card">
+            <div key={perfume.id} className="perfumeCard">
               {perfume.imageUrl && (
                 <img
                   src={perfume.imageUrl}
                   alt={perfume.name}
-                  className="perfume-image"
+                  className="perfumeImage"
                 />
               )}
               <h3>{perfume.name}</h3>

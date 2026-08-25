@@ -2,6 +2,7 @@
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    
 }
 
 .tab.active {
@@ -26,7 +27,7 @@
     margin-top: 1rem;
 }
 
-.perfume-card {
+.perfumeCard {
     width: 200px;
     border-radius: 10px;
     background-color: rgb(255, 230, 250);
@@ -42,7 +43,7 @@
     margin-top: 0.5rem;
 }
 
-.perfume-image {
+.perfumeImage {
     width: 100%;
     height: auto;
     display: block;
@@ -79,6 +80,7 @@ header {
     display: flex;
     justify-content: center;
     gap: 12px;
+    
 
     input {
         border-radius: 6px;

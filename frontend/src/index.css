@@ -4,7 +4,7 @@ input, button, label {
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Inter, sans-serif;
   background-color: #f3d8ff;
   color: #923ba6;
 }
