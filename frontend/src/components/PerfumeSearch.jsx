@@ -24,12 +24,11 @@ export default function PerfumeSearch() {
       )
       const data = await response.json()
 
-      if (!response.ok || !Array.isArray(data)) {
+      if (!response.ok) {
         setResults([])
-        setError(data.error || data.message || "Search failed.")
+        setError(data.error ? data.error : data.message ? data.message : "Search failed.")
         return
       }
-
       setResults(data)
 
     } catch (err) {
@@ -45,9 +44,9 @@ export default function PerfumeSearch() {
     const payload = {
       fragellaId: perfume.id ? String(perfume.id) : null,
       name: perfume.Name,
-      brand: perfume.Brand || null,
-      imageUrl: perfume["Image URL"] || null,
-      notes: (perfume["General Notes"] || []).join(", "),
+      brand: perfume.Brand ? perfume.Brand : null,
+      imageUrl: perfume["Image URL"] ? perfume["Image URL"] : null,
+      notes: perfume["General Notes"] ? perfume["General Notes"].join(", ") : "",
     }
 
     try {
@@ -59,19 +58,18 @@ export default function PerfumeSearch() {
       const data = await response.json()
 
       if (!response.ok) {
-        setError(data.message || "Could not add to collection.")
+        setError(data.message ? data.message : "Could not add to collection.")
         return
       }
-
       setMessage(`${perfume.Name} added to your collection!`)
+
     } catch (err) {
-      setError("Could not reach the backend. Is Flask running?")
+      setError("Could not reach the backend.")
     }
   }
 
   return (
     <div className="perfume-search">
-
       <h2>Search for perfumes</h2>
 
       <form className="search-form" onSubmit={searchPerfumes}>
@@ -91,23 +89,30 @@ export default function PerfumeSearch() {
       <div className="perfume-results">
         {results.map((perfume) => (
           <div key={perfume.id} className="perfumeCard">
-            {perfume["Image URL"] && (
+
+            {perfume["Image URL"] ? (
               <img
                 src={perfume["Image URL"]}
                 alt={perfume.Name}
                 className="perfumeImage"
               />
-            )}
+            ) : null}
+
             <h3>{perfume.Name}</h3>
             <p>
               <strong>Notes: </strong>{" "}
-              {(perfume["General Notes"] || []).join(", ") || "No notes listed"}
+              {perfume["General Notes"] ? perfume["General Notes"].join(", ") : "No notes listed"}
             </p>
-            <button type="button" onClick={() => addToCollection(perfume)}>
+
+            <button
+              type="button"
+              className="card-button"
+              onClick={() => addToCollection(perfume)}
+            >
               Add to collection
             </button>
           </div>
-        ))}
+      ))}
       </div>
     </div>
   )

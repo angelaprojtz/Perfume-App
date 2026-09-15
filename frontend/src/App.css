@@ -111,7 +111,7 @@ header {
     cursor: pointer;
 }
 
-.details-toggle {
+.perfumeCard > .card-button {
     margin: 0 8px 10px;
 }
 

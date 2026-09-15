@@ -16,7 +16,7 @@ export default function PerfumeCollection() {
         setError("Could not load collection.")
         return
       }
-      setPerfumes(data.perfumes || [])
+      setPerfumes(data.perfumes ? data.perfumes : [])
       setError("")
     } catch (err) {
       setError("Could not reach the backend.")
@@ -37,7 +37,7 @@ export default function PerfumeCollection() {
         fetchCollection()
       } else {
         const data = await response.json()
-        setError(data.message || "Could not remove perfume.")
+        setError(data.message ? data.message : "Could not remove perfume.")
       }
     } catch (err) {
       setError("Could not reach the backend.")
@@ -49,11 +49,11 @@ export default function PerfumeCollection() {
       setExpandedId(null)
       return
     }
-
     setExpandedId(perfume.id)
     setMessage("")
+    
     setDraft({
-      purchasedAt: perfume.purchasedAt || "",
+      purchasedAt: perfume.purchasedAt ? perfume.purchasedAt : "",
       wouldBuyAgain:
         perfume.wouldBuyAgain === true ? "yes"
         : perfume.wouldBuyAgain === false ? "no"
@@ -66,7 +66,7 @@ export default function PerfumeCollection() {
     setMessage("")
 
     const payload = {
-      purchasedAt: draft.purchasedAt || null,
+      purchasedAt: draft.purchasedAt ? draft.purchasedAt : null,
       wouldBuyAgain:
         draft.wouldBuyAgain === "yes" ? true : draft.wouldBuyAgain === "no" ? false : null,
     }
@@ -80,12 +80,12 @@ export default function PerfumeCollection() {
       const data = await response.json()
 
       if (!response.ok) {
-        setError(data.message || "Could not save details.")
+        setError(data.message ? data.message : "Could not save details.")
         return
       }
-
       setMessage("Saved!")
       fetchCollection()
+
     } catch (err) {
       setError("Could not reach the backend.")
     }
@@ -94,43 +94,46 @@ export default function PerfumeCollection() {
   return (
     <div className="perfume-collection">
       <h2>My Collection</h2>
+
       {error ? <p className="search-error">{error}</p> : null}
       {message ? <p className="search-success">{message}</p> : null}
-      {perfumes.length === 0 && !error && (
-        <p>No perfumes saved yet. Search and add some!</p>
-      )}
+
+      {perfumes.length === 0 && !error ? (<p>No perfumes saved yet. Search and add some!</p>) : null}
+      
       <div className="perfume-results">
         {perfumes.map((perfume) => {
           const isExpanded = expandedId === perfume.id
 
           return (
             <div key={perfume.id} className="perfumeCard">
-              {perfume.imageUrl && (
+              {perfume.imageUrl ? (
                 <img
                   src={perfume.imageUrl}
                   alt={perfume.name}
                   className="perfumeImage"
                 />
-              )}
+              ) : null}
               <h3>{perfume.name}</h3>
 
               <button
                 type="button"
-                className="card-button details-toggle"
+                className="card-button"
                 onClick={() => toggleDetails(perfume)}
               >
                 {isExpanded ? "Hide details" : "Show details"}
               </button>
 
-              {isExpanded && (
+              {isExpanded ? (
                 <div className="perfume-details">
-                  {perfume.brand && <p>{perfume.brand}</p>}
+                  {perfume.brand ? <p>{perfume.brand}</p> : null}
+
                   <p>
-                    <strong>Notes:</strong> {perfume.notes || "No notes listed"}
+                    <strong>Notes:</strong> {perfume.notes ? perfume.notes : "No notes listed"}
                   </p>
 
                   <div className="detail-field">
                     <label htmlFor={`bought-${perfume.id}`}>When did you buy it?</label>
+
                     <input
                       id={`bought-${perfume.id}`}
                       type="date"
@@ -139,6 +142,7 @@ export default function PerfumeCollection() {
                         setDraft((prev) => ({ ...prev, purchasedAt: e.target.value }))
                       }
                     />
+
                   </div>
 
                   <div className="detail-field">
@@ -176,7 +180,7 @@ export default function PerfumeCollection() {
                     </button>
                   </div>
                 </div>
-              )}
+              ) : null}
             </div>
           )
         })}
