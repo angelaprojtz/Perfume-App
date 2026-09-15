@@ -87,7 +87,7 @@ export default function PerfumeCollection() {
       setMessage("Saved!")
       fetchCollection()
     } catch (err) {
-      setError("Could not reach the backend. Is Flask running?")
+      setError("Could not reach the backend.")
     }
   }
 
@@ -114,7 +114,11 @@ export default function PerfumeCollection() {
               )}
               <h3>{perfume.name}</h3>
 
-              <button type="button" onClick={() => toggleDetails(perfume)}>
+              <button
+                type="button"
+                className="card-button details-toggle"
+                onClick={() => toggleDetails(perfume)}
+              >
                 {isExpanded ? "Hide details" : "Show details"}
               </button>
 
@@ -155,15 +159,22 @@ export default function PerfumeCollection() {
                     </select>
                   </div>
 
-                  <button type="button" onClick={() => saveDetails(perfume.id)}>
-                    Save
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => removeFromCollection(perfume.id)}
-                  >
-                    Remove
-                  </button>
+                  <div className="detail-actions">
+                    <button
+                      type="button"
+                      className="card-button"
+                      onClick={() => saveDetails(perfume.id)}
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      className="card-button"
+                      onClick={() => removeFromCollection(perfume.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

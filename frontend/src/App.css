@@ -100,3 +100,23 @@ header {
         width: 100px;
     }
 }
+
+.card-button {
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(223, 117, 211);
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.details-toggle {
+    margin: 0 8px 10px;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 6px;
+    margin: 8px;
+}
